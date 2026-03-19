@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seu Plano de Rotina Infantil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#D4537E;--pink-l:#FBEAF0;--pink-d:#72243E;--pink-m:#ED93B1;
+  --teal:#1D9E75;--teal-l:#E1F5EE;--teal-d:#085041;
+  --amber:#BA7517;--amber-l:#FAEEDA;--amber-d:#633806;
+  --text:#1a1a1a;--text-m:#555;--text-s:#888;
+  --bg:#fdfcfb;--surface:#fff;--border:rgba(0,0,0,.10);--border-m:rgba(0,0,0,.16);
+  --r:14px;--r-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:24px 16px 80px;display:flex;justify-content:center}
+.wrap{width:100%;max-width:520px}
+.brand{text-align:center;padding:12px 0 24px;display:flex;align-items:center;justify-content:center;gap:8px}
+.brand-dot{width:8px;height:8px;background:var(--pink);border-radius:50%}
+.brand-name{font-size:12px;font-weight:500;color:var(--text-s);letter-spacing:.08em;text-transform:uppercase}
+.screen{display:none;animation:fi .3s ease}
+.screen.on{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.serif{font-family:'DM Serif Display',serif}
+h1{font-size:28px;line-height:1.25;margin-bottom:10px}
+h2{font-size:22px;line-height:1.3;margin-bottom:8px}
+h3{font-size:15px;font-weight:500;margin-bottom:4px}
+p{font-size:15px;color:var(--text-m);line-height:1.65}
+.small{font-size:13px;color:var(--text-s);line-height:1.5}
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;letter-spacing:.04em;margin-bottom:14px}
+.b-teal{background:var(--teal-l);color:var(--teal-d);border:1px solid #9FE1CB}
+.b-pink{background:var(--pink-l);color:var(--pink-d);border:1px solid var(--pink-m)}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:500;color:var(--text-m);margin-bottom:5px}
+.field input,.field select,.field textarea{
+  width:100%;padding:12px 14px;border-radius:var(--r-sm);border:1px solid var(--border-m);
+  background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;
+  transition:border-color .15s;resize:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--pink)}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:block;width:100%;padding:16px;border-radius:var(--r);border:none;background:var(--pink);color:#fff;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:20px;transition:background .15s,transform .1s;letter-spacing:.01em}
+.btn:hover{background:#c0476f}
+.btn:active{transform:scale(.98)}
+.btn:disabled{background:#e8a5bc;cursor:default}
+.btn-sec{display:block;width:100%;padding:14px;border-radius:var(--r);border:1px solid var(--border-m);background:transparent;color:var(--text-m);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;margin-top:10px;transition:background .15s}
+.btn-sec:hover{background:rgba(0,0,0,.04)}
+.divider{height:1px;background:var(--border);margin:20px 0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:14px}
+.loader{text-align:center;padding:40px 0}
+.spinner{width:36px;height:36px;border:3px solid var(--pink-l);border-top-color:var(--pink);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-msg{font-size:15px;color:var(--text-m);line-height:1.6}
+.result-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;white-space:pre-wrap;font-size:14px;color:var(--text);line-height:1.8;font-family:'DM Sans',sans-serif}
+.result-box strong{font-weight:500;color:var(--text)}
+.copy-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:var(--r);border:1px solid var(--pink-m);background:var(--pink-l);color:var(--pink-d);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-top:14px;transition:background .15s}
+.copy-btn:hover{background:#f5d0df}
+.step-row{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.step-pill{font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(--border-m);color:var(--text-s)}
+.step-pill.done{background:var(--teal-l);color:var(--teal-d);border-color:#9FE1CB}
+.step-pill.active{background:var(--pink-l);color:var(--pink-d);border-color:var(--pink-m);font-weight:500}
+.check-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.check-row:last-child{border-bottom:none}
+.check-box{width:20px;height:20px;border-radius:5px;border:1px solid var(--border-m);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s,border-color .15s}
+.check-box.done{background:var(--teal);border-color:var(--teal)}
+.check-box.done::after{content:"✓";color:#fff;font-size:12px;font-weight:500}
+.check-label{font-size:14px;color:var(--text-m)}
+@media(max-width:380px){h1{font-size:24px}.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="brand"><div class="brand-dot"></div><span class="brand-name">Rotina Infantil</span></div>
+
+<!-- TELA 1: BOAS-VINDAS -->
+<div class="screen on" id="s-bv">
+  <div class="badge b-teal">Compra confirmada</div>
+  <h1 class="serif">Agora vamos montar a rotina do seu filho</h1>
+  <p style="margin:10px 0 22px">Preencha os dados abaixo e o plano personalizado estará pronto em segundos.</p>
+  <div class="card" style="background:var(--teal-l);border-color:#9FE1CB">
+    <p style="font-size:14px;color:var(--teal-d);line-height:1.6">Leva menos de 2 minutos para preencher. O plano vem pronto para aplicar hoje mesmo.</p>
+  </div>
+  <button class="btn" onclick="go('s-form')">Preencher agora</button>
+</div>
+
+<!-- TELA 2: FORMULÁRIO -->
+<div class="screen" id="s-form">
+  <div class="badge b-pink">Dados da criança</div>
+  <h2 class="serif">Conte um pouco sobre seu filho</h2>
+  <p style="margin:6px 0 20px">Quanto mais você preencher, mais personalizado fica o plano.</p>
+
+  <div class="two">
+    <div class="field">
+      <label>Nome da criança</label>
+      <input type="text" id="f-nome" placeholder="Ex: Enzo">
+    </div>
+    <div class="field">
+      <label>Idade</label>
+      <select id="f-idade">
+        <option value="">Selecione</option>
+        <option>2 anos</option><option>3 anos</option><option>4 anos</option>
+        <option>5 anos</option><option>6 anos</option><option>7 anos</option>
+        <option>8 anos</option><option>9 anos</option><option>10 anos</option>
+      </select>
+    </div>
+  </div>
+  <div class="two">
+    <div class="field">
+      <label>Acorda por volta de</label>
+      <select id="f-acorda">
+        <option>5h30</option><option>6h</option><option>6h30</option><option>7h</option>
+        <option>7h30</option><option>8h</option><option>8h30</option><option>9h</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Dorme por volta de</label>
+      <select id="f-dorme">
+        <option>19h30</option><option>20h</option><option>20h30</option><option>21h</option>
+        <option>21h30</option><option>22h</option><option>22h30</option><option>23h</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Principal dificuldade</label>
+    <select id="f-dific">
+      <option value="">Selecione</option>
+      <option>Dificuldade para dormir</option>
+      <option>Acorda muito à noite</option>
+      <option>Comportamento difícil / birras</option>
+      <option>Não segue a rotina</option>
+      <option>Excesso de tela</option>
+      <option>Resistência na hora das refeições</option>
+      <option>Dificuldade de concentração</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Como é o comportamento geral?</label>
+    <select id="f-comp">
+      <option value="">Selecione</option>
+      <option>Muito agitado e impulsivo</option>
+      <option>Irritado e com muitas birras</option>
+      <option>Resistente e teimoso</option>
+      <option>Ansioso e dependente</option>
+      <option>Geralmente tranquilo</option>
+    </select>
+  </div>
+  <div class="two">
+    <div class="field">
+      <label>Nível de energia</label>
+      <select id="f-energia">
+        <option>Altíssima energia</option>
+        <option>Energia alta</option>
+        <option>Energia média</option>
+        <option>Mais calmo e quieto</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Horas de tela por dia</label>
+      <select id="f-tela">
+        <option>Menos de 1h</option>
+        <option>1 a 2 horas</option>
+        <option>2 a 4 horas</option>
+        <option>Mais de 4 horas</option>
+      </select>
+    </div>
+  </div>
+  <button class="btn" onclick="gerarPlano()">Gerar meu plano personalizado</button>
+</div>
+
+<!-- TELA 3: LOADING -->
+<div class="screen" id="s-load">
+  <div class="loader">
+    <div class="spinner"></div>
+    <div class="loader-msg" id="load-msg">Analisando os dados do seu filho...<br><span class="small">Isso leva só alguns segundos</span></div>
+  </div>
+</div>
+
+<!-- TELA 4: RESULTADO -->
+<div class="screen" id="s-resultado">
+  <div class="badge b-teal">Plano pronto</div>
+  <h2 class="serif" id="res-titulo">Plano de Rotina</h2>
+  <p style="margin-bottom:16px" class="small">Criado especialmente com base nas informações que você forneceu.</p>
+
+  <div class="result-box" id="res-texto"></div>
+
+  <button class="copy-btn" onclick="copiarPlano()">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M3 11V3a2 2 0 012-2h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+    <span id="copy-txt">Copiar para WhatsApp</span>
+  </button>
+
+  <div class="divider"></div>
+
+  <h3 style="margin-bottom:12px">Checklist do dia</h3>
+  <div id="checklist">
+    <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Acordou no horário combinado</span></div>
+    <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Seguiu a rotina da manhã</span></div>
+    <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Reduziu o tempo de tela</span></div>
+    <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Fez a rotina noturna tranquila</span></div>
+    <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Dormiu no horário</span></div>
+  </div>
+
+  <button class="btn-sec" style="margin-top:20px" onclick="go('s-form')">Ajustar os dados</button>
+</div>
+
+</div>
+
+<script>
+var planoGerado='';
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on')});
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleCheck(el){
+  el.classList.toggle('done');
+}
+
+async function gerarPlano(){
+  var nome=document.getElementById('f-nome').value||'a criança';
+  var idade=document.getElementById('f-idade').value;
+  var acorda=document.getElementById('f-acorda').value;
+  var dorme=document.getElementById('f-dorme').value;
+  var dific=document.getElementById('f-dific').value;
+  var comp=document.getElementById('f-comp').value;
+  var energia=document.getElementById('f-energia').value;
+  var tela=document.getElementById('f-tela').value;
+
+  if(!idade||!dific||!comp){alert('Por favor, preencha pelo menos a idade, dificuldade principal e comportamento.');return;}
+
+  go('s-load');
+  document.getElementById('load-msg').innerHTML='Montando o plano de <strong>'+nome+'</strong>...<br><span class="small">Isso leva só alguns segundos</span>';
+
+  var prompt=`Você é um especialista em rotina infantil.
+Crie um plano de rotina personalizado, simples e direto, com base nas informações abaixo.
+
+DADOS:
+Nome da criança: ${nome}
+Idade: ${idade}
+Acorda: ${acorda}
+Dorme: ${dorme}
+Principal dificuldade: ${dific}
+Comportamento: ${comp}
+Nível de energia: ${energia}
+Uso de telas: ${tela} por dia
+
+OBJETIVO:
+Criar um plano prático que a mãe consiga aplicar no mesmo dia.
+
+ESTRUTURA:
+1. ROTINA DO DIA
+Divida em:
+- Manhã (com horários sugeridos)
+- Tarde (com horários sugeridos)
+- Noite (com horários sugeridos)
+
+2. AJUSTE PRINCIPAL
+Explique de forma simples como melhorar a principal dificuldade da criança. Máximo 4 linhas.
+
+3. 3 DICAS PRÁTICAS
+Dicas curtas, diretas e fáceis de aplicar hoje.
+
+4. CHECKLIST SIMPLES
+✔ Dormir no horário
+✔ Seguir a rotina
+✔ Reduzir telas
+✔ Rotina noturna tranquila
+
+REGRAS:
+- Linguagem simples, como conversa entre amigas
+- Frases curtas
+- Sem explicações longas
+- Fácil de aplicar
+- Usar o nome da criança
+- Tom acolhedor para a mãe
+- Formato limpo para WhatsApp`;
+
+  try {
+    var response=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    var data=await response.json();
+    var texto=data.content.map(function(i){return i.text||''}).join('');
+    planoGerado=texto;
+    document.getElementById('res-titulo').textContent='Plano de '+nome;
+    document.getElementById('res-texto').textContent=texto;
+    go('s-resultado');
+  } catch(e){
+    alert('Ocorreu um erro ao gerar o plano. Tente novamente em instantes.');
+    go('s-form');
+  }
+}
+
+function copiarPlano(){
+  if(!planoGerado)return;
+  navigator.clipboard.writeText(planoGerado).then(function(){
+    var btn=document.getElementById('copy-txt');
+    btn.textContent='Copiado!';
+    setTimeout(function(){btn.textContent='Copiar para WhatsApp'},2500);
+  });
+}
+</script>
+</body>
+</html>

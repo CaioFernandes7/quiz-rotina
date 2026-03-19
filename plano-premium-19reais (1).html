@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seu Plano Personalizado Completo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#D4537E;--pink-l:#FBEAF0;--pink-d:#72243E;--pink-m:#ED93B1;
+  --teal:#1D9E75;--teal-l:#E1F5EE;--teal-d:#085041;
+  --amber:#BA7517;--amber-l:#FAEEDA;--amber-d:#633806;
+  --purple:#534AB7;--purple-l:#EEEDFE;--purple-d:#3C3489;
+  --text:#1a1a1a;--text-m:#555;--text-s:#888;
+  --bg:#fdfcfb;--surface:#fff;--border:rgba(0,0,0,.10);--border-m:rgba(0,0,0,.16);
+  --r:14px;--r-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:24px 16px 80px;display:flex;justify-content:center}
+.wrap{width:100%;max-width:520px}
+.brand{text-align:center;padding:12px 0 24px;display:flex;align-items:center;justify-content:center;gap:8px}
+.brand-dot{width:8px;height:8px;background:var(--pink);border-radius:50%}
+.brand-name{font-size:12px;font-weight:500;color:var(--text-s);letter-spacing:.08em;text-transform:uppercase}
+.screen{display:none;animation:fi .3s ease}
+.screen.on{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.serif{font-family:'DM Serif Display',serif}
+h1{font-size:28px;line-height:1.25;margin-bottom:10px}
+h2{font-size:22px;line-height:1.3;margin-bottom:8px}
+h3{font-size:15px;font-weight:500;margin-bottom:4px}
+p{font-size:15px;color:var(--text-m);line-height:1.65}
+.small{font-size:13px;color:var(--text-s);line-height:1.5}
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;letter-spacing:.04em;margin-bottom:14px}
+.b-pink{background:var(--pink-l);color:var(--pink-d);border:1px solid var(--pink-m)}
+.b-teal{background:var(--teal-l);color:var(--teal-d);border:1px solid #9FE1CB}
+.b-amber{background:var(--amber-l);color:var(--amber-d);border:1px solid #FAC775}
+.b-purple{background:var(--purple-l);color:var(--purple-d);border:1px solid #CECBF6}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:500;color:var(--text-m);margin-bottom:5px}
+.field input,.field select,.field textarea{
+  width:100%;padding:12px 14px;border-radius:var(--r-sm);border:1px solid var(--border-m);
+  background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;
+  transition:border-color .15s;resize:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--pink)}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:block;width:100%;padding:16px;border-radius:var(--r);border:none;background:var(--pink);color:#fff;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;cursor:pointer;margin-top:20px;transition:background .15s,transform .1s}
+.btn:hover{background:#c0476f}
+.btn:active{transform:scale(.98)}
+.btn:disabled{background:#e8a5bc;cursor:default}
+.btn-sec{display:block;width:100%;padding:14px;border-radius:var(--r);border:1px solid var(--border-m);background:transparent;color:var(--text-m);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;margin-top:10px;transition:background .15s}
+.btn-sec:hover{background:rgba(0,0,0,.04)}
+.divider{height:1px;background:var(--border);margin:20px 0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:14px}
+.loader{text-align:center;padding:50px 0}
+.spinner{width:40px;height:40px;border:3px solid var(--pink-l);border-top-color:var(--pink);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-steps{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.load-step{font-size:13px;color:var(--text-s);display:flex;align-items:center;gap:8px;opacity:.4;transition:opacity .4s}
+.load-step.done{opacity:1;color:var(--teal-d)}
+.load-step.active{opacity:1;color:var(--pink-d)}
+.load-step::before{content:"○";flex-shrink:0}
+.load-step.done::before{content:"●";color:var(--teal)}
+.load-step.active::before{content:"◉";color:var(--pink)}
+
+/* Resultado estruturado */
+.section-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:14px}
+.section-card h3{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-s);margin-bottom:12px}
+.section-card .content{font-size:14px;color:var(--text);line-height:1.8;white-space:pre-wrap}
+.section-manha{border-left:3px solid #f59e42;border-radius:0 var(--r) var(--r) 0;background:rgba(245,158,66,.06)}
+.section-tarde{border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;background:rgba(29,158,117,.06)}
+.section-noite{border-left:3px solid var(--purple);border-radius:0 var(--r) var(--r) 0;background:rgba(83,74,183,.06)}
+.period-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:middle}
+.dot-m{background:#f59e42}.dot-t{background:var(--teal)}.dot-n{background:var(--purple)}
+
+.tabs{display:flex;gap:6px;margin:16px 0;overflow-x:auto;padding-bottom:2px}
+.tab-btn{flex-shrink:0;font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid var(--border-m);color:var(--text-s);background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.tab-btn.active{background:var(--pink-l);color:var(--pink-d);border-color:var(--pink-m);font-weight:500}
+
+.copy-area{background:var(--pink-l);border:1px solid var(--pink-m);border-radius:var(--r);padding:16px 18px;margin-top:6px}
+.copy-area p{font-size:13px;color:var(--pink-d);margin-bottom:10px}
+.copy-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:var(--r-sm);border:1px solid var(--pink-m);background:var(--surface);color:var(--pink-d);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s}
+.copy-btn:hover{background:#f5d0df}
+
+.check-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.check-row:last-child{border-bottom:none}
+.check-box{width:22px;height:22px;border-radius:6px;border:1px solid var(--border-m);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.check-box.done{background:var(--teal);border-color:var(--teal)}
+.check-box.done::after{content:"✓";color:#fff;font-size:13px;font-weight:500}
+.check-label{font-size:14px;color:var(--text-m)}
+
+.feat-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.feat-row:last-child{border-bottom:none}
+.feat-ok{color:var(--teal);font-weight:500;flex-shrink:0;margin-top:1px}
+.feat-text{font-size:14px;color:var(--text-m);line-height:1.4}
+
+.raw-btn{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;color:var(--text-s);background:transparent;border:1px solid var(--border-m);border-radius:var(--r-sm);padding:10px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;width:100%;transition:background .15s}
+.raw-btn:hover{background:rgba(0,0,0,.04)}
+.raw-full{display:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-top:12px;white-space:pre-wrap;font-size:13px;color:var(--text-m);line-height:1.8;max-height:500px;overflow-y:auto}
+.raw-full.show{display:block}
+
+@media(max-width:380px){h1{font-size:24px}.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="brand"><div class="brand-dot"></div><span class="brand-name">Rotina Infantil · Premium</span></div>
+
+<!-- BOAS-VINDAS -->
+<div class="screen on" id="s-bv">
+  <div class="badge b-pink">Plano Personalizado Completo</div>
+  <h1 class="serif">Parabéns! Agora vamos criar o plano completo do seu filho</h1>
+  <p style="margin:10px 0 20px">Você vai receber uma rotina detalhada, estratégias de comportamento e um plano de 7 dias para começar agora.</p>
+  <div class="card">
+    <div style="font-size:13px;font-weight:500;color:var(--text-s);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em">O que você vai receber</div>
+    <div class="feat-row"><span class="feat-ok">✓</span><span class="feat-text">Rotina completa: manhã, tarde e noite com horários</span></div>
+    <div class="feat-row"><span class="feat-ok">✓</span><span class="feat-text">Estratégia específica para a dificuldade do seu filho</span></div>
+    <div class="feat-row"><span class="feat-ok">✓</span><span class="feat-text">Dicas de comportamento e redução de birras</span></div>
+    <div class="feat-row"><span class="feat-ok">✓</span><span class="feat-text">Plano de ajuste em 7 dias (dia a dia)</span></div>
+    <div class="feat-row"><span class="feat-ok">✓</span><span class="feat-text">Checklist diário completo</span></div>
+    <div class="feat-row"><span class="feat-ok">✓</span><span class="feat-text">Mensagem personalizada de apoio para você</span></div>
+  </div>
+  <button class="btn" onclick="go('s-form')">Preencher os dados agora</button>
+</div>
+
+<!-- FORMULÁRIO -->
+<div class="screen" id="s-form">
+  <div class="badge b-pink">Dados para personalização</div>
+  <h2 class="serif">Conta tudo sobre seu filho</h2>
+  <p style="margin:6px 0 20px">Quanto mais detalhes, mais preciso e personalizado fica o plano.</p>
+
+  <div class="two">
+    <div class="field">
+      <label>Nome da criança</label>
+      <input type="text" id="f-nome" placeholder="Ex: Isabela">
+    </div>
+    <div class="field">
+      <label>Idade</label>
+      <select id="f-idade">
+        <option value="">Selecione</option>
+        <option>2 anos</option><option>3 anos</option><option>4 anos</option>
+        <option>5 anos</option><option>6 anos</option><option>7 anos</option>
+        <option>8 anos</option><option>9 anos</option><option>10 anos</option>
+      </select>
+    </div>
+  </div>
+  <div class="two">
+    <div class="field">
+      <label>Acorda por volta de</label>
+      <select id="f-acorda">
+        <option>5h30</option><option>6h</option><option>6h30</option><option selected>7h</option>
+        <option>7h30</option><option>8h</option><option>8h30</option><option>9h</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Dorme por volta de</label>
+      <select id="f-dorme">
+        <option>19h30</option><option>20h</option><option>20h30</option><option selected>21h</option>
+        <option>21h30</option><option>22h</option><option>22h30</option><option>23h</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Principal dificuldade</label>
+    <select id="f-dific">
+      <option value="">Selecione</option>
+      <option>Dificuldade para dormir</option>
+      <option>Acorda muito à noite</option>
+      <option>Comportamento difícil / birras frequentes</option>
+      <option>Não segue a rotina de jeito nenhum</option>
+      <option>Excesso de tela — não larga o celular/tablet</option>
+      <option>Resistência na hora das refeições</option>
+      <option>Dificuldade de concentração</option>
+      <option>Ansiedade e apego excessivo</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Como é o comportamento geral?</label>
+    <select id="f-comp">
+      <option value="">Selecione</option>
+      <option>Muito agitado, não para um segundo</option>
+      <option>Irritado e com muitas birras</option>
+      <option>Resistente e teimoso — tudo é uma briga</option>
+      <option>Ansioso, dependente, chora fácil</option>
+      <option>Geralmente tranquilo, mas com picos difíceis</option>
+    </select>
+  </div>
+  <div class="two">
+    <div class="field">
+      <label>Nível de energia</label>
+      <select id="f-energia">
+        <option>Altíssima — vulcão em erupção</option>
+        <option>Alta — muito ativo</option>
+        <option>Média — equilibrado</option>
+        <option>Baixa — mais calmo e quieto</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Horas de tela por dia</label>
+      <select id="f-tela">
+        <option>Menos de 1h</option>
+        <option>1 a 2 horas</option>
+        <option>2 a 4 horas</option>
+        <option>Mais de 4 horas</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Algo a mais que queira contar? <span style="font-weight:400;color:var(--text-s)">(opcional)</span></label>
+    <textarea id="f-obs" rows="3" placeholder="Ex: tem irmão mais novo, vai para a escola às 8h, é muito apegado à avó..."></textarea>
+  </div>
+  <button class="btn" onclick="gerarPlano()">Gerar meu plano completo</button>
+</div>
+
+<!-- LOADING -->
+<div class="screen" id="s-load">
+  <div class="loader">
+    <div class="spinner"></div>
+    <p style="font-size:16px;font-weight:500;margin-bottom:6px" id="load-title">Criando seu plano...</p>
+    <p class="small">Analisando cada detalhe com cuidado</p>
+    <div class="load-steps" id="load-steps">
+      <div class="load-step active" id="ls0">Analisando o perfil da criança</div>
+      <div class="load-step" id="ls1">Montando a rotina personalizada</div>
+      <div class="load-step" id="ls2">Criando estratégias de comportamento</div>
+      <div class="load-step" id="ls3">Preparando o plano de 7 dias</div>
+      <div class="load-step" id="ls4">Finalizando seu plano completo</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTADO -->
+<div class="screen" id="s-resultado">
+  <div class="badge b-pink">Plano completo pronto</div>
+  <h2 class="serif" id="res-titulo">Plano Personalizado</h2>
+  <p class="small" style="margin-bottom:20px">Criado exclusivamente para seu filho com base em tudo que você contou.</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab(this,'t-rotina')">Rotina do dia</button>
+    <button class="tab-btn" onclick="showTab(this,'t-comportamento')">Comportamento</button>
+    <button class="tab-btn" onclick="showTab(this,'t-7dias')">Plano 7 dias</button>
+    <button class="tab-btn" onclick="showTab(this,'t-checklist')">Checklist</button>
+  </div>
+
+  <div id="t-rotina" class="tab-panel">
+    <div class="section-card section-manha">
+      <h3><span class="period-dot dot-m"></span>Manhã</h3>
+      <div class="content" id="r-manha">Carregando...</div>
+    </div>
+    <div class="section-card section-tarde">
+      <h3><span class="period-dot dot-t"></span>Tarde</h3>
+      <div class="content" id="r-tarde">Carregando...</div>
+    </div>
+    <div class="section-card section-noite">
+      <h3><span class="period-dot dot-n"></span>Noite</h3>
+      <div class="content" id="r-noite">Carregando...</div>
+    </div>
+  </div>
+
+  <div id="t-comportamento" class="tab-panel" style="display:none">
+    <div class="section-card">
+      <h3>O que está acontecendo</h3>
+      <div class="content" id="r-resumo">Carregando...</div>
+    </div>
+    <div class="section-card" style="border-color:var(--pink-m);background:var(--pink-l)">
+      <h3 style="color:var(--pink-d)">Estratégia para a dificuldade principal</h3>
+      <div class="content" style="color:var(--pink-d)" id="r-estrategia">Carregando...</div>
+    </div>
+    <div class="section-card">
+      <h3>Estratégias de comportamento</h3>
+      <div class="content" id="r-comportamento">Carregando...</div>
+    </div>
+    <div class="section-card" style="border-color:#9FE1CB;background:var(--teal-l)">
+      <h3 style="color:var(--teal-d)">Controle de telas</h3>
+      <div class="content" style="color:var(--teal-d)" id="r-telas">Carregando...</div>
+    </div>
+  </div>
+
+  <div id="t-7dias" class="tab-panel" style="display:none">
+    <div class="section-card">
+      <h3>Plano de ajuste em 7 dias</h3>
+      <div class="content" id="r-7dias">Carregando...</div>
+    </div>
+    <div class="card" style="background:var(--amber-l);border-color:#FAC775;margin-top:0">
+      <p style="font-size:14px;color:var(--amber-d);line-height:1.65" id="r-mensagem">Carregando...</p>
+    </div>
+  </div>
+
+  <div id="t-checklist" class="tab-panel" style="display:none">
+    <h3 style="margin-bottom:12px">Checklist diário completo</h3>
+    <div id="checklist">
+      <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Acordou no horário combinado</span></div>
+      <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Seguiu a rotina da manhã</span></div>
+      <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Alimentação ok nas refeições</span></div>
+      <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Tempo de tela dentro do combinado</span></div>
+      <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Fez a rotina noturna tranquila</span></div>
+      <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Dormiu no horário</span></div>
+      <div class="check-row"><div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label">Usou as estratégias de comportamento</span></div>
+    </div>
+    <div class="copy-area" style="margin-top:20px">
+      <p>Copie o plano completo para salvar no WhatsApp ou enviar para alguém de confiança.</p>
+      <button class="copy-btn" onclick="copiarTudo()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M3 11V3a2 2 0 012-2h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span id="copy-txt">Copiar plano completo</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <button class="raw-btn" onclick="toggleRaw()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+    Ver plano completo em texto
+  </button>
+  <div class="raw-full" id="raw-full"></div>
+  <button class="btn-sec" style="margin-top:14px" onclick="go('s-form')">Ajustar os dados</button>
+</div>
+
+</div>
+
+<script>
+var planoCompleto='';
+var dadosForm={};
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on')});
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleCheck(el){el.classList.toggle('done')}
+
+function showTab(btn,tabId){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.style.display='none'});
+  btn.classList.add('active');
+  document.getElementById(tabId).style.display='block';
+}
+
+function toggleRaw(){
+  var el=document.getElementById('raw-full');
+  el.classList.toggle('show');
+}
+
+function animateLoader(){
+  var steps=['ls0','ls1','ls2','ls3','ls4'];
+  var i=0;
+  function next(){
+    if(i>0)document.getElementById(steps[i-1]).classList.remove('active');
+    if(i<steps.length){
+      var el=document.getElementById(steps[i]);
+      if(i>0)el.classList.add('active');
+      i++;
+      setTimeout(next,1800);
+    }
+  }
+  setTimeout(next,1800);
+}
+
+async function gerarPlano(){
+  var nome=document.getElementById('f-nome').value||'a criança';
+  var idade=document.getElementById('f-idade').value;
+  var acorda=document.getElementById('f-acorda').value;
+  var dorme=document.getElementById('f-dorme').value;
+  var dific=document.getElementById('f-dific').value;
+  var comp=document.getElementById('f-comp').value;
+  var energia=document.getElementById('f-energia').value;
+  var tela=document.getElementById('f-tela').value;
+  var obs=document.getElementById('f-obs').value;
+
+  if(!idade||!dific||!comp){alert('Por favor, preencha pelo menos a idade, dificuldade principal e comportamento.');return;}
+
+  dadosForm={nome,idade,acorda,dorme,dific,comp,energia,tela,obs};
+  document.getElementById('load-title').textContent='Criando o plano de '+nome+'...';
+  go('s-load');
+  animateLoader();
+
+  var prompt=`Você é um especialista em rotina infantil e comportamento infantil.
+Crie um plano COMPLETO e altamente personalizado com base nos dados abaixo.
+
+DADOS:
+Nome da criança: ${nome}
+Idade: ${idade}
+Acorda: ${acorda}
+Dorme: ${dorme}
+Principal dificuldade: ${dific}
+Comportamento: ${comp}
+Nível de energia: ${energia}
+Uso de telas: ${tela} por dia
+Observações adicionais: ${obs||'Nenhuma'}
+
+ESTRUTURA (use exatamente esses marcadores para eu poder separar as seções):
+
+[RESUMO]
+Explique brevemente o que está acontecendo com a criança e por que isso acontece. Tom acolhedor. Máximo 5 linhas.
+
+[MANHA]
+Rotina da manhã com horários detalhados. Use o horário de acordar (${acorda}) como base. Atividades específicas para a idade.
+
+[TARDE]
+Rotina da tarde com horários. Equilíbrio entre descanso e atividade.
+
+[NOITE]
+Rotina da noite com desaceleração progressiva. Preparação para o sono. Terminar no horário ${dorme}.
+
+[ESTRATEGIA]
+Causa do problema principal (${dific}), como corrigir passo a passo, o que evitar. Prático e simples.
+
+[COMPORTAMENTO]
+Orientações para reduzir irritação e aumentar cooperação. Específico para o comportamento descrito (${comp}).
+
+[TELAS]
+Sugestões simples e realistas para controle de tela considerando o uso atual (${tela}/dia).
+
+[7DIAS]
+Plano de ajuste em 7 dias:
+Dias 1-2: o que fazer
+Dias 3-4: o que adicionar
+Dias 5-7: consolidação
+
+[MENSAGEM]
+Mensagem final acolhedora para a mãe, usando o nome da criança (${nome}). Reforce que ela está no caminho certo. Tom caloroso e encorajador.
+
+REGRAS:
+- Linguagem simples, como conversa entre amigas
+- Tom acolhedor e empático
+- Nada técnico
+- Usar o nome da criança (${nome}) ao longo do texto
+- Frases curtas
+- Parecer feito sob medida para essa família`;
+
+  try {
+    var response=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    var data=await response.json();
+    var texto=data.content.map(function(i){return i.text||''}).join('');
+    planoCompleto=texto;
+    preencherResultado(texto,nome);
+    go('s-resultado');
+  } catch(e){
+    alert('Erro ao gerar o plano. Tente novamente em instantes.');
+    go('s-form');
+  }
+}
+
+function extrairSecao(texto,tag){
+  var re=new RegExp('\\['+tag+'\\]([\\s\\S]*?)(?=\\[[A-Z0-9]+\\]|$)','i');
+  var m=texto.match(re);
+  return m?m[1].trim():'';
+}
+
+function preencherResultado(texto,nome){
+  document.getElementById('res-titulo').textContent='Plano de '+nome;
+  document.getElementById('r-manha').textContent=extrairSecao(texto,'MANHA')||'Veja o plano completo abaixo.';
+  document.getElementById('r-tarde').textContent=extrairSecao(texto,'TARDE')||'';
+  document.getElementById('r-noite').textContent=extrairSecao(texto,'NOITE')||'';
+  document.getElementById('r-resumo').textContent=extrairSecao(texto,'RESUMO')||'';
+  document.getElementById('r-estrategia').textContent=extrairSecao(texto,'ESTRATEGIA')||'';
+  document.getElementById('r-comportamento').textContent=extrairSecao(texto,'COMPORTAMENTO')||'';
+  document.getElementById('r-telas').textContent=extrairSecao(texto,'TELAS')||'';
+  document.getElementById('r-7dias').textContent=extrairSecao(texto,'7DIAS')||'';
+  document.getElementById('r-mensagem').textContent=extrairSecao(texto,'MENSAGEM')||'';
+  document.getElementById('raw-full').textContent=texto;
+}
+
+function copiarTudo(){
+  if(!planoCompleto)return;
+  var txt='PLANO PERSONALIZADO COMPLETO\n'+
+    'Criança: '+dadosForm.nome+' | '+dadosForm.idade+'\n\n'+planoCompleto;
+  navigator.clipboard.writeText(txt).then(function(){
+    var btn=document.getElementById('copy-txt');
+    btn.textContent='Copiado!';
+    setTimeout(function(){btn.textContent='Copiar plano completo'},2500);
+  });
+}
+</script>
+</body>
+</html>
