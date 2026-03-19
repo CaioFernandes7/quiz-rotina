@@ -431,24 +431,54 @@ REGRAS:
 - Frases curtas
 - Parecer feito sob medida para essa família`;
 
-  try {
-    var response=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        messages:[{role:'user',content:prompt}]
-      })
-    });
-    var data=await response.json();
-    var texto=data.content.map(function(i){return i.text||''}).join('');
-    planoCompleto=texto;
-    preencherResultado(texto,nome);
-    go('s-resultado');
-  } catch(e){
-    alert('Erro ao gerar o plano. Tente novamente em instantes.');
-    go('s-form');
+ setTimeout(function(){
+
+  var texto = `
+[RESUMO]
+${nome} está em uma fase comum para a idade (${idade}), onde limites e rotina ainda estão sendo estruturados.
+
+[MANHA]
+${acorda} – Acordar e higiene  
+Café da manhã  
+Atividade leve e interação  
+
+[TARDE]
+Almoço  
+Momento de descanso  
+Brincadeiras com gasto de energia  
+
+[NOITE]
+Jantar leve  
+Sem telas  
+Rotina calma  
+Dormir às ${dorme}  
+
+[ESTRATEGIA]
+A dificuldade (${dific}) acontece principalmente por falta de consistência.  
+O ideal é repetir a rotina todos os dias.
+
+[COMPORTAMENTO]
+Para ${comp}, evite confronto direto.  
+Use reforço positivo e consistência.
+
+[TELAS]
+Reduza gradualmente o uso (${tela}).  
+Evite telas antes de dormir.
+
+[7DIAS]
+Dias 1-2: Ajustar rotina  
+Dias 3-4: Criar consistência  
+Dias 5-7: Consolidar hábitos  
+
+[MENSAGEM]
+Você está no caminho certo com ${nome}. Continue consistente, os resultados vêm.`;
+
+  planoCompleto = texto;
+
+  preencherResultado(texto,nome);
+  go('s-resultado');
+
+}, 3500);
   }
 }
 
